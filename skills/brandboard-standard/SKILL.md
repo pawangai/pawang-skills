@@ -1,6 +1,8 @@
 ---
 name: brandboard-standard
 description: Membuat, menyusun, atau mengaudit brand board / brand guideline satu halaman dengan struktur section yang standar (hero, variasi logo, palet warna, tipografi, gaya bahasa, contoh penerapan, footer, maskot, ikon, pola background, dll). Punya dua cakupan - bertingkat (default) dan lengkap (semua section terisi). Gunakan skill ini setiap kali user minta dibuatkan brand board, brand guideline, brand identity sheet, style guide visual, prompt gambar untuk brand board, atau minta brand board baru "disamakan formatnya" dengan brand lain, termasuk saat user hanya menyebut nama brand baru dan minta "bikinin board-nya". Juga gunakan untuk membandingkan atau mengecek kelengkapan brand board yang sudah ada terhadap standar, walau user tidak menyebut kata "standar".
+license: MIT
+compatibility: "Tanpa dependensi khusus. Prompt gambar dipakai di tool image generation pilihan user. Memanggil skill interview untuk keputusan yang belum jelas."
 metadata:
   author: "Pawang"
 ---

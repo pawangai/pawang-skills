@@ -1,0 +1,12 @@
+{
+  "name": "pawang",
+  "interface": { "displayName": "Pawang" },
+  "plugins": [
+    {
+      "name": "pawang-skills",
+      "source": { "source": "local", "path": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

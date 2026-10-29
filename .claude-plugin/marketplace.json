@@ -1,0 +1,18 @@
+{
+  "name": "pawang",
+  "owner": { "name": "Pawang" },
+  "metadata": {
+    "description": "Marketplace skill Pawang.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "pawang-skills",
+      "source": "./",
+      "description": "Skill Pawang: interview, panduan brand, brand board, perencanaan prototype, dan pembuat skill.",
+      "version": "1.0.0",
+      "category": "productivity",
+      "homepage": "https://github.com/pawangai/pawang-skills"
+    }
+  ]
+}

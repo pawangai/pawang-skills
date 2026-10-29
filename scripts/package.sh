@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Mengemas skill menjadi dist/<nama>.skill (zip dengan folder skill di akar arsip).
+# Mengemas skill menjadi dist/<nama>.zip dan dist/<nama>.skill (isi sama: folder skill di akar arsip).
+# .skill untuk claude.ai; .zip untuk ChatGPT, Gemini app, dan Perplexity.
 # Pemakaian: scripts/package.sh            -> semua skill
 #            scripts/package.sh interview  -> satu skill
 set -euo pipefail
@@ -20,10 +21,11 @@ for name in names:
     src = skills_dir / name
     if not (src / "SKILL.md").is_file():
         sys.exit(f"skill tidak ditemukan: {name}")
-    out = dist / f"{name}.skill"
+    out = dist / f"{name}.zip"
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for f in sorted(src.rglob("*")):
             if f.is_file() and "__pycache__" not in f.parts and f.suffix != ".pyc":
                 z.write(f, Path(name) / f.relative_to(src))
-    print(f"dibuat: dist/{name}.skill")
+    (dist / f"{name}.skill").write_bytes(out.read_bytes())
+    print(f"dibuat: dist/{name}.zip dan dist/{name}.skill")
 PY

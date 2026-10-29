@@ -1,6 +1,8 @@
 ---
 name: "plans-prototype"
 description: "Menghasilkan 4 dokumen perencanaan prototype (PRD, flow, desain, edge case) lalu memandu iterasi prototype: prompt per tahap di bawah 1000 karakter, audit zip, sinkron dokumen."
+license: MIT
+compatibility: "Python 3 tanpa paket tambahan untuk skrip di scripts/. Opsi --reader di check_contract.py memakai skill plan Pawang (tidak ada di repo ini). Path keluaran default /mnt/user-data/outputs/figr/ disesuaikan di agent lain. Memanggil skill interview."
 metadata:
   author: "Pawang"
 ---

@@ -1,6 +1,8 @@
 ---
 name: "panduan-brand"
 description: "Buat panduan brand lengkap sebagai berkas Markdown (.md): nama, tagline, filosofi, voice, logo, warna dan font, layanan, contoh teks. Pakai saat user minta panduan brand atau brand guideline."
+license: MIT
+compatibility: "Python 3 untuk skrip kontras dan pemeriksa struktur. SendUserFile dan WebSearch adalah tool runtime Pawang; di agent lain pakai tool setara untuk mengirim berkas dan mencari di web. Memanggil skill interview."
 metadata:
   author: "Pawang"
 ---

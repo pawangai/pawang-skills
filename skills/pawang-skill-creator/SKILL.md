@@ -2,6 +2,7 @@
 name: pawang-skill-creator
 description: Membuat, mengaudit, dan memperbaiki skill berformat Agent Skills (folder berisi SKILL.md). Gunakan saat user ingin membuat skill baru, mereview atau merapikan SKILL.md, atau memperbaiki skill yang tidak terpicu, termasuk bila user hanya bilang buatkan skill. Jangan untuk menulis AGENTS.md (tugas agents-md) dan jangan untuk prompt sekali pakai.
 compatibility: Python 3 untuk scripts/validate_skill.py (PyYAML opsional). Panduan pengujian lintas model belum diuji pada model tertentu.
+license: MIT
 metadata:
   author: "Pawang"
 ---

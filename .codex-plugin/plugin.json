@@ -1,0 +1,20 @@
+{
+  "name": "pawang-skills",
+  "version": "1.0.0",
+  "description": "Skill Pawang: interview, panduan brand, brand board, perencanaan prototype, dan pembuat skill.",
+  "author": { "name": "Pawang" },
+  "homepage": "https://github.com/pawangai/pawang-skills",
+  "repository": "https://github.com/pawangai/pawang-skills",
+  "license": "MIT",
+  "keywords": ["agent-skills", "interview", "brand", "prototype", "skill-creator"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Pawang Skills",
+    "shortDescription": "Interview, brand, prototype, dan pembuat skill",
+    "longDescription": "Lima skill Pawang: interview untuk menggali keputusan, panduan brand, brand board standar, perencanaan prototype, dan pembuat skill.",
+    "developerName": "Pawang",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "defaultPrompt": ["Wawancarai saya tentang rencana ini sebelum mulai mengerjakan."]
+  }
+}

@@ -1,6 +1,8 @@
 ---
 name: interview
 description: Menanyai user dalam ronde bernomor, tiap pertanyaan dengan rekomendasi jawaban, agar tidak ada keputusan yang diasumsikan diam-diam. Gunakan mode penuh (pohon keputusan dan konfirmasi) untuk ide atau rencana mentah, atau bila user bilang "interview me", "grill me", "wawancarai saya"; mode ringan untuk 1-3 pertanyaan dari skill lain. Bukan untuk meminta persetujuan commit, merge, push, atau deploy.
+license: MIT
+compatibility: "Tanpa dependensi khusus; berjalan di agent mana pun yang mendukung format Agent Skills."
 metadata:
   author: "Pawang"
 ---
