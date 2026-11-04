@@ -8,11 +8,16 @@ Skill (format Agent Skills) milik Pawang, dengan marketplace untuk Claude Code d
 |---|---|
 | `interview` | Mewawancarai user per ronde bernomor dengan rekomendasi jawaban, supaya tidak ada keputusan atau asumsi diam-diam. Mode penuh dan mode ringan. |
 | `panduan-brand` | Membuat panduan brand lengkap sebagai berkas Markdown. |
-| `brandboard-standard` | Menyusun dan mengaudit brand board satu halaman dengan struktur section standar. |
 | `plans-prototype` | Menghasilkan 4 dokumen perencanaan prototype (PRD, flow, desain, edge case), lalu memandu iterasi prototype. |
 | `pawang-skill-creator` | Membuat, mengaudit, dan memperbaiki skill baru. Berisi `scripts/validate_skill.py`. |
 
-Urutan pemakaian: `panduan-brand` → `brandboard-standard` → `plans-prototype`. `interview` dipanggil ketiganya bila ada keputusan yang belum jelas, jadi pasang `interview` bersama skill lain.
+Urutan pemakaian: `panduan-brand` → `plans-prototype`. `interview` dipanggil keduanya bila ada keputusan yang belum jelas, jadi pasang `interview` bersama skill lain.
+
+Skill brand board tidak lagi ada di repo ini. Pakai `brandboard-standard` dari `pawang-content-studio`:
+
+```bash
+npx skills add pawangai/pawang-content-studio --skill brandboard-standard
+```
 
 ## Memasang
 

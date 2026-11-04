@@ -2,3 +2,10 @@ dist/
 __pycache__/
 *.pyc
 .DS_Store
+*_report.md
+fix-log.md
+
+# hasil instalasi skill eksternal (npx skills add) — lokal, bukan sumber repo
+.agents/skills/
+.claude/
+skills-lock.json
