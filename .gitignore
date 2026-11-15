@@ -3,6 +3,7 @@ __pycache__/
 *.pyc
 .DS_Store
 *_report.md
+*.patch
 fix-log.md
 
 # hasil instalasi skill eksternal (npx skills add) — lokal, bukan sumber repo
