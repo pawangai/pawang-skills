@@ -1,10 +1,10 @@
 {
   "name": "pawang-skills",
-  "version": "1.1.0",
-  "description": "Skill Pawang: interview, panduan brand, perencanaan prototype, dan pembuat skill.",
+  "version": "1.2.0",
+  "description": "Skill Pawang: interview, panduan brand, tema brand, perencanaan prototype, dan pembuat skill.",
   "author": { "name": "Pawang" },
   "homepage": "https://github.com/pawangai/pawang-skills",
   "repository": "https://github.com/pawangai/pawang-skills",
   "license": "MIT",
-  "keywords": ["agent-skills", "interview", "brand", "prototype", "skill-creator"]
+  "keywords": ["agent-skills", "interview", "brand", "theme", "prototype", "skill-creator"]
 }

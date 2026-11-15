@@ -8,10 +8,11 @@ Skill (format Agent Skills) milik Pawang, dengan marketplace untuk Claude Code d
 |---|---|
 | `interview` | Mewawancarai user per ronde bernomor dengan rekomendasi jawaban, supaya tidak ada keputusan atau asumsi diam-diam. Mode penuh dan mode ringan. |
 | `panduan-brand` | Membuat panduan brand lengkap sebagai berkas Markdown. |
+| `make-theme` | Merancang tema brand (metafora, tone of voice, palet HEX dengan cek kontras, tipografi, tagline, pilar layanan), opsional blueprint SEO/AEO/GEO dan kode tema. Berisi `scripts/check_theme.py`. |
 | `plans-prototype` | Menghasilkan 4 dokumen perencanaan prototype (PRD, flow, desain, edge case), lalu memandu iterasi prototype. |
 | `pawang-skill-creator` | Membuat, mengaudit, dan memperbaiki skill baru. Berisi `scripts/validate_skill.py`. |
 
-Urutan pemakaian: `panduan-brand` → `plans-prototype`. `interview` dipanggil keduanya bila ada keputusan yang belum jelas, jadi pasang `interview` bersama skill lain.
+Urutan pemakaian: `panduan-brand` → `plans-prototype`. `make-theme` berdiri sendiri; hasilnya bisa dijadikan bahan `panduan-brand`. `interview` dipanggil ketiganya bila ada keputusan yang belum jelas, jadi pasang `interview` bersama skill lain.
 
 Skill brand board tidak lagi ada di repo ini. Pakai `brandboard-standard` dari `pawang-content-studio`:
 
@@ -54,11 +55,12 @@ Aplikasi ini tidak punya marketplace berbasis URL. Unduh ZIP per skill dari hala
 | Gemini app | Settings → Skills → Upload, unggah `<nama>.zip` |
 | Perplexity | Hanya lewat API Portal sebagai custom skill (ZIP berisi satu folder dan satu `SKILL.md`) |
 
-Catatan: `plans-prototype` berisi skrip Python, dan sebagian aplikasi chat dilaporkan menolak paket berskrip. Bila unggahan ditolak, buka issue.
+Catatan: `plans-prototype` dan `make-theme` berisi skrip Python, dan sebagian aplikasi chat dilaporkan menolak paket berskrip. Bila unggahan ditolak, buka issue.
 
 ## Dependensi
 
 - `plans-prototype` memanggil `interview` untuk wawancara (langkah 0).
+- `make-theme` memanggil `interview` mode ringan untuk discovery; bila tidak terpasang, skill bertanya langsung.
 - `plans-prototype` membaca kontrak dokumen milik skill `plan` Pawang (`references/contract.md`, opsi `--reader` di `check_contract.py`). Skill `plan` **tidak ada di repo ini**.
 - `panduan-brand` menyebut tool runtime Pawang (`SendUserFile`, `WebSearch`). Di agent lain, ganti dengan tool setara.
 - Python 3 tanpa paket tambahan untuk semua skrip.
