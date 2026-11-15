@@ -1,14 +1,39 @@
-# pawang-skills
+<div align="center">
+
+<img src="assets/hero.svg" alt="pawang-skills: lima kubus 3D melayang di atas lantai grid, mewakili lima skill Pawang" width="100%">
+
+<br>
+
+[![CI](https://github.com/pawangai/pawang-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/pawangai/pawang-skills/actions/workflows/ci.yml)
+[![Rilis](https://img.shields.io/github/v/release/pawangai/pawang-skills?style=flat-square&labelColor=14213D&color=FF8A3D)](https://github.com/pawangai/pawang-skills/releases)
+[![Lisensi MIT](https://img.shields.io/badge/lisensi-MIT-3FB8AF?style=flat-square&labelColor=14213D)](LICENSE)
+[![Bintang](https://img.shields.io/github/stars/pawangai/pawang-skills?style=flat-square&labelColor=14213D&color=F2C14E)](https://github.com/pawangai/pawang-skills/stargazers)
+
+![Skill: 5](https://img.shields.io/badge/skill-5-6C8CFF?style=flat-square&labelColor=14213D)
+![Format: Agent Skills](https://img.shields.io/badge/format-Agent_Skills-E86A92?style=flat-square&labelColor=14213D)
+![Skrip: Python 3 stdlib](https://img.shields.io/badge/skrip-Python_3_stdlib-3FB8AF?style=flat-square&labelColor=14213D)
+![Claude Code](https://img.shields.io/badge/Claude_Code-marketplace-FF8A3D?style=flat-square&labelColor=14213D)
+![Codex](https://img.shields.io/badge/Codex-marketplace-F2C14E?style=flat-square&labelColor=14213D)
+
+[Skill](#daftar-skill) · [Memasang](#memasang) · [Dependensi](#dependensi) · [Pengembangan](#pengembangan) · [Struktur](#struktur)
+
+</div>
+
+---
 
 Skill (format Agent Skills) milik Pawang, dengan marketplace untuk Claude Code dan Codex, dan paket ZIP untuk aplikasi chat. Satu folder per skill di `skills/`. Lisensi MIT.
 
 ## Daftar skill
 
+<div align="center">
+<img src="assets/skills.svg" alt="Lima skill sebagai kubus. make-theme menjadi bahan panduan-brand, panduan-brand dilanjutkan plans-prototype, dan ketiganya memanggil interview. pawang-skill-creator berdiri sendiri." width="100%">
+</div>
+
 | Skill | Fungsi |
 |---|---|
 | `interview` | Mewawancarai user per ronde bernomor dengan rekomendasi jawaban, supaya tidak ada keputusan atau asumsi diam-diam. Mode penuh dan mode ringan. |
-| `panduan-brand` | Membuat panduan brand lengkap sebagai berkas Markdown. |
 | `make-theme` | Merancang tema brand (metafora, tone of voice, palet HEX dengan cek kontras, tipografi, tagline, pilar layanan), opsional blueprint SEO/AEO/GEO dan kode tema. Berisi `scripts/check_theme.py`. |
+| `panduan-brand` | Membuat panduan brand lengkap sebagai berkas Markdown. |
 | `plans-prototype` | Menghasilkan 4 dokumen perencanaan prototype (PRD, flow, desain, edge case), lalu memandu iterasi prototype. |
 | `pawang-skill-creator` | Membuat, mengaudit, dan memperbaiki skill baru. Berisi `scripts/validate_skill.py`. |
 
@@ -79,6 +104,7 @@ scripts/package.sh interview    # satu skill
 
 ```
 skills/<nama>/SKILL.md          # sumber tunggal semua skill
+assets/                         # gambar animasi SVG untuk README
 .claude-plugin/                 # plugin dan marketplace Claude Code
 .codex-plugin/                  # plugin Codex
 .agents/plugins/marketplace.json  # marketplace Codex

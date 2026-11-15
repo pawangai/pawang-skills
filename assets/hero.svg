@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-labelledby="t d">
+  <title id="t">pawang-skills</title>
+  <desc id="d">Lima kubus isometrik melayang di atas lantai grid perspektif, mewakili lima skill Pawang, dikelilingi cincin orbit.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0E1A33"/><stop offset="1" stop-color="#1B2B52"/></linearGradient>
+    <radialGradient id="glow" cx="905" cy="178" r="300" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6C8CFF" stop-opacity=".30"/><stop offset="1" stop-color="#6C8CFF" stop-opacity="0"/></radialGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E1A33" stop-opacity="1"/><stop offset="1" stop-color="#0E1A33" stop-opacity="0"/></linearGradient>
+    <clipPath id="panel"><rect width="1200" height="420" rx="24"/></clipPath>
+    <clipPath id="floor"><rect y="300" width="1200" height="120"/></clipPath>
+    <g id="cube">
+      <polygon points="0,-40 34.64,-20 34.64,20 0,40 -34.64,20 -34.64,-20" fill="currentColor"/>
+      <polygon points="0,-40 34.64,-20 0,0 -34.64,-20" fill="#fff" fill-opacity=".32"/>
+      <polygon points="-34.64,-20 0,0 0,40 -34.64,20" fill="#fff" fill-opacity=".04"/>
+      <polygon points="0,0 34.64,-20 34.64,20 0,40" fill="#0B1226" fill-opacity=".40"/>
+      <path d="M0,0V40M0,0L-34.64,-20M0,0L34.64,-20" stroke="#fff" stroke-opacity=".38" stroke-width="1.2" fill="none"/>
+      <polygon points="0,-40 34.64,-20 34.64,20 0,40 -34.64,20 -34.64,-20" fill="none" stroke="#fff" stroke-opacity=".22"/>
+    </g>
+  </defs>
+  <style>
+    text{font-family:'Avenir Next','Segoe UI','Helvetica Neue',system-ui,-apple-system,sans-serif}
+    .f{animation:float 7s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+    .sh{animation:shadow 7s ease-in-out infinite;transform-origin:905px 338px;transform-box:view-box}
+    @keyframes shadow{0%,100%{opacity:.42;transform:scaleX(1)}50%{opacity:.22;transform:scaleX(.86)}}
+    .gh{stroke:#6C8CFF;fill:none;opacity:0;animation:rush 4.8s cubic-bezier(.55,0,1,1) infinite}
+    @keyframes rush{0%{transform:translateY(0);opacity:0;stroke-width:.4}15%{opacity:.55}100%{transform:translateY(120px);opacity:.85;stroke-width:2.2}}
+    @media (prefers-reduced-motion:reduce){.f,.sh,.gh{animation:none}.orbit-dots{display:none}}
+  </style>
+  <g clip-path="url(#panel)">
+    <rect width="1200" height="420" fill="url(#bg)"/>
+    <rect width="1200" height="420" fill="url(#glow)"/>
+    <g clip-path="url(#floor)">
+      <g stroke="#6C8CFF" stroke-opacity=".28" stroke-width="1" fill="none"><line x1="600" y1="300" x2="-900" y2="420" /><line x1="600" y1="300" x2="-750" y2="420" /><line x1="600" y1="300" x2="-600" y2="420" /><line x1="600" y1="300" x2="-450" y2="420" /><line x1="600" y1="300" x2="-300" y2="420" /><line x1="600" y1="300" x2="-150" y2="420" /><line x1="600" y1="300" x2="0" y2="420" /><line x1="600" y1="300" x2="150" y2="420" /><line x1="600" y1="300" x2="300" y2="420" /><line x1="600" y1="300" x2="450" y2="420" /><line x1="600" y1="300" x2="600" y2="420" /><line x1="600" y1="300" x2="750" y2="420" /><line x1="600" y1="300" x2="900" y2="420" /><line x1="600" y1="300" x2="1050" y2="420" /><line x1="600" y1="300" x2="1200" y2="420" /><line x1="600" y1="300" x2="1350" y2="420" /><line x1="600" y1="300" x2="1500" y2="420" /><line x1="600" y1="300" x2="1650" y2="420" /><line x1="600" y1="300" x2="1800" y2="420" /><line x1="600" y1="300" x2="1950" y2="420" /><line x1="600" y1="300" x2="2100" y2="420" /></g>
+      <line class="gh" style="animation-delay:-0.0s" x1="0" y1="300" x2="1200" y2="300"/><line class="gh" style="animation-delay:-0.8s" x1="0" y1="300" x2="1200" y2="300"/><line class="gh" style="animation-delay:-1.6s" x1="0" y1="300" x2="1200" y2="300"/><line class="gh" style="animation-delay:-2.4s" x1="0" y1="300" x2="1200" y2="300"/><line class="gh" style="animation-delay:-3.2s" x1="0" y1="300" x2="1200" y2="300"/><line class="gh" style="animation-delay:-4.0s" x1="0" y1="300" x2="1200" y2="300"/>
+      <rect y="300" width="1200" height="40" fill="url(#fade)"/>
+    </g>
+    <ellipse class="sh" cx="905" cy="338" rx="170" ry="15" fill="#05091A"/>
+    <g transform="rotate(-8 905 178)">
+      <path d="M673,178A232,48 0 0 1 1137,178" stroke="#6C8CFF" stroke-opacity=".32" stroke-width="1.5" fill="none" stroke-dasharray="2 7" stroke-linecap="round"/>
+    </g>
+    <g class="f" style="animation-delay:-2.3s"><use href="#cube" color="#6C8CFF" transform="translate(905 98) scale(1.05)"/></g>
+    <g class="f" style="animation-delay:-4.1s"><use href="#cube" color="#3FB8AF" transform="translate(792 168) scale(1.2)"/></g>
+    <g class="f" style="animation-delay:-0.9s"><use href="#cube" color="#F2C14E" transform="translate(1018 168) scale(1.2)"/></g>
+    <g class="f" style="animation-delay:-5.4s"><use href="#cube" color="#E86A92" transform="translate(1118 92) scale(0.8)"/></g>
+    <g class="f" style="animation-delay:-3.2s"><use href="#cube" color="#FF8A3D" transform="translate(905 232) scale(1.5)"/></g>
+    <g transform="rotate(-8 905 178)">
+      <path d="M673,178A232,48 0 0 0 1137,178" stroke="#6C8CFF" stroke-opacity=".75" stroke-width="1.8" fill="none" stroke-dasharray="2 7" stroke-linecap="round"/>
+      <g class="orbit-dots"><circle fill="#FFF6E9" r="4"><animateMotion dur="9s" begin="-0s" repeatCount="indefinite" path="M673,178A232,48 0 0 0 1137,178A232,48 0 0 0 673,178"/>
+          <animate attributeName="opacity" dur="9s" begin="-0s" repeatCount="indefinite" values=".7;1;.7;.3;.7" keyTimes="0;.25;.5;.75;1"/>
+          <animate attributeName="r" dur="9s" begin="-0s" repeatCount="indefinite" values="4;5.5;4;2.6;4" keyTimes="0;.25;.5;.75;1"/></circle><circle fill="#FFF6E9" r="4"><animateMotion dur="9s" begin="-3s" repeatCount="indefinite" path="M673,178A232,48 0 0 0 1137,178A232,48 0 0 0 673,178"/>
+          <animate attributeName="opacity" dur="9s" begin="-3s" repeatCount="indefinite" values=".7;1;.7;.3;.7" keyTimes="0;.25;.5;.75;1"/>
+          <animate attributeName="r" dur="9s" begin="-3s" repeatCount="indefinite" values="4;5.5;4;2.6;4" keyTimes="0;.25;.5;.75;1"/></circle><circle fill="#FFF6E9" r="4"><animateMotion dur="9s" begin="-6s" repeatCount="indefinite" path="M673,178A232,48 0 0 0 1137,178A232,48 0 0 0 673,178"/>
+          <animate attributeName="opacity" dur="9s" begin="-6s" repeatCount="indefinite" values=".7;1;.7;.3;.7" keyTimes="0;.25;.5;.75;1"/>
+          <animate attributeName="r" dur="9s" begin="-6s" repeatCount="indefinite" values="4;5.5;4;2.6;4" keyTimes="0;.25;.5;.75;1"/></circle></g>
+    </g>
+    <text x="64" y="176" font-size="68" font-weight="800" fill="#FFF6E9" letter-spacing="-1.5">pawang-skills</text>
+    <text x="66" y="222" font-size="23" font-weight="600" fill="#FFF6E9">Skill agent AI milik Pawang.</text>
+    <text x="66" y="254" font-size="17" fill="#A9B6D3">Wawancara, tema brand, panduan brand, dan perencanaan prototype.</text>
+    <text x="66" y="280" font-size="17" fill="#A9B6D3">Satu sumber di skills/, dipasang ke banyak agent.</text>
+  </g>
+</svg>
