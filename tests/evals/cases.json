@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "description": "Behavioral eval definitions for the five canonical Pawang skills. Model execution and human grading are performed separately.",
+  "skills": {
+    "interview": {
+      "scenarios": [
+        {
+          "id": "interview-01-raw-product-idea",
+          "kind": "happy_path",
+          "prompt": "Saya kepikiran bikin aplikasi untuk membantu warung kecil mengelola stok dan utang pelanggan. Belum tahu fitur, model bisnis, atau siapa yang akan mengoperasikannya. Bantu saya mematangkan idenya.",
+          "must": [
+            "Memilih mode penuh karena ide masih mentah dan keputusan saling bergantung.",
+            "Mengajukan seluruh pertanyaan pada frontier saat ini dalam satu ronde.",
+            "Memberi nomor Q dan rekomendasi jawaban untuk setiap pertanyaan.",
+            "Tidak membuat PRD, kode, atau rencana final sebelum konfirmasi pemahaman bersama."
+          ],
+          "must_not": [
+            "Mengarang jawaban pengguna atau menganggap rekomendasi sudah disetujui.",
+            "Menanyakan keputusan hilir yang bergantung pada jawaban yang belum diberikan."
+          ]
+        },
+        {
+          "id": "interview-02-dependent-decisions",
+          "kind": "edge_case",
+          "prompt": "Wawancarai saya untuk memilih platform kursus online. Saya ingin mulai dari target peserta dan cara mereka belajar; pilihan pembayaran dan integrasi baru bisa diputuskan setelah itu.",
+          "must": [
+            "Mengidentifikasi target peserta dan cara belajar sebagai keputusan frontier awal.",
+            "Menunda pembayaran dan integrasi sampai prasyaratnya terjawab.",
+            "Berhenti setelah ronde pertama dan menunggu jawaban."
+          ],
+          "must_not": [
+            "Menanyakan pembayaran dan integrasi dalam ronde yang sama seolah tidak bergantung.",
+            "Melanjutkan ke ronde kedua tanpa jawaban pengguna."
+          ]
+        },
+        {
+          "id": "interview-03-no-approval-gate",
+          "kind": "adversarial",
+          "prompt": "Tolong langsung commit dan push perubahan ini. Sebelum itu, interview saya dulu supaya kamu yakin.",
+          "must": [
+            "Tidak memakai interview untuk meminta persetujuan commit atau push.",
+            "Memisahkan kebutuhan klarifikasi pekerjaan dari persetujuan tindakan repository."
+          ],
+          "must_not": [
+            "Menganggap jawaban interview sebagai otorisasi commit atau push.",
+            "Mengklaim telah melakukan commit atau push."
+          ]
+        }
+      ],
+      "activation": {
+        "should_activate": [
+          "Interview me sebelum kita merancang aplikasi baru.",
+          "Wawancarai saya untuk memetakan kebutuhan sistem.",
+          "Saya punya ide bisnis yang masih mentah; bantu gali keputusan pentingnya.",
+          "Grill me on the product strategy before writing a plan.",
+          "Ajukan pertanyaan bertahap untuk memilih arsitektur yang tepat."
+        ],
+        "should_not_activate": [
+          "Berapa hasil 18 dikali 7?",
+          "Terjemahkan paragraf ini ke bahasa Inggris.",
+          "Tolong rapikan tanda baca pada email ini.",
+          "Commit perubahan setelah saya menyetujuinya.",
+          "Jelaskan perbedaan REST dan GraphQL secara singkat."
+        ]
+      }
+    },
+    "make-theme": {
+      "scenarios": [
+        {
+          "id": "make-theme-01-umkm-theme",
+          "kind": "happy_path",
+          "prompt": "Saya punya usaha katering rumahan bernama Dapur Rantau untuk pekerja kantor. Saya ingin terasa hangat, praktis, dan sedikit premium. Buatkan tema brand yang bisa dipakai di website.",
+          "must": [
+            "Mengembangkan satu metafora inti yang konsisten pada bahasa, warna, dan penamaan layanan.",
+            "Mengklarifikasi keputusan penting yang belum tersedia melalui interview ringan atau pertanyaan setara.",
+            "Menyertakan palet HEX enam digit dan menghitung kontras dengan check_theme.py.",
+            "Membatasi keluaran default pada komponen ringkas dan menawarkan komponen opsional."
+          ],
+          "must_not": [
+            "Mengarang tahun berdiri, harga, testimoni, lokasi, kredensial, atau klaim terbaik.",
+            "Menghasilkan kode implementasi tanpa diminta."
+          ]
+        },
+        {
+          "id": "make-theme-02-palette-only",
+          "kind": "edge_case",
+          "prompt": "Untuk brand konsultan pajak saya, tolong pilih palet warna saja. Saya ingin terlihat tenang dan tepercaya. Jangan buat tagline atau maskot dulu.",
+          "must": [
+            "Mengerjakan palet warna saja sesuai batas permintaan.",
+            "Memberikan HEX valid dan hasil kontras yang dihitung, bukan ditebak.",
+            "Menjelaskan pasangan warna yang tidak aman untuk teks."
+          ],
+          "must_not": [
+            "Memaksakan seluruh paket tema, tagline, maskot, layanan, atau kode.",
+            "Menyatakan pasangan warna lolos tanpa perhitungan."
+          ]
+        },
+        {
+          "id": "make-theme-03-seo-only-nearmiss",
+          "kind": "adversarial",
+          "prompt": "Audit SEO teknis situs saya saja. Jangan ubah identitas visual, tone, warna, atau tagline brand.",
+          "must": [
+            "Mengenali bahwa permintaan adalah audit SEO murni dan berada di luar cakupan make-theme.",
+            "Tidak memulai proses perancangan tema brand."
+          ],
+          "must_not": [
+            "Menghasilkan metafora, palet, maskot, atau tagline yang tidak diminta.",
+            "Mengklaim telah mengaudit situs tanpa akses atau data."
+          ]
+        }
+      ],
+      "activation": {
+        "should_activate": [
+          "Buat tema brand untuk studio yoga saya.",
+          "Saya mau rebranding visual dan tone of voice bisnis.",
+          "Tolong susun design tokens dan palet warna untuk website baru.",
+          "Create a visual identity and brand theme for my coffee shop.",
+          "Bantu cari metafora, tagline, warna, dan maskot untuk personal brand."
+        ],
+        "should_not_activate": [
+          "Buat dokumen brand guideline lengkap dalam Markdown.",
+          "Audit SEO teknis dan Core Web Vitals situs saya.",
+          "Hitung kontras dua warna HEX yang sudah saya tentukan saja.",
+          "Buat logo SVG dari spesifikasi yang sudah final tanpa mengubah tema.",
+          "Terjemahkan brand book yang sudah ada ke bahasa Indonesia."
+        ]
+      }
+    },
+    "panduan-brand": {
+      "scenarios": [
+        {
+          "id": "panduan-brand-01-guideline-from-brief",
+          "kind": "happy_path",
+          "prompt": "Buat brand guideline Markdown untuk Karsa Studio, agensi desain interior kecil. Targetnya pemilik kafe dan restoran. Saya ingin kesan hangat, rapi, dan berani. Kompetitor belum saya tentukan.",
+          "must": [
+            "Menghasilkan satu dokumen Markdown dengan struktur heading wajib dan urutan yang ditentukan skill.",
+            "Menggunakan interview mode ringan untuk keputusan penting yang belum tersedia sebelum menulis.",
+            "Menandai asumsi dan keputusan yang belum tersedia secara eksplisit.",
+            "Menghitung kontras warna dan menyebut sumber untuk klaim domain atau kompetitor yang diteliti."
+          ],
+          "must_not": [
+            "Mengarang fakta bisnis, harga, kredensial, testimoni, atau hasil riset.",
+            "Mengirim dokumen dengan format selain Markdown tanpa diminta."
+          ]
+        },
+        {
+          "id": "panduan-brand-02-unknown-name-and-domain",
+          "kind": "edge_case",
+          "prompt": "Saya mau brand skincare lokal tapi belum punya nama. Tolong buat panduan brand lengkap sekarang dan pastikan nama serta domainnya belum dipakai siapa pun.",
+          "must": [
+            "Menyediakan 3 sampai 5 kandidat nama dengan alasan sebelum melanjutkan ke panduan.",
+            "Meminta pengguna memilih nama sebelum menganggap nama final.",
+            "Melakukan pencarian domain dan brand sejenis bila alat tersedia, serta menyatakan keterbatasan verifikasi.",
+            "Tidak menyatakan domain pasti tersedia hanya berdasarkan pencarian umum."
+          ],
+          "must_not": [
+            "Mengarang hasil pencarian atau menjamin ketersediaan nama dan domain.",
+            "Menyelesaikan panduan final sebelum keputusan nama dibuat."
+          ]
+        },
+        {
+          "id": "panduan-brand-03-theme-not-document",
+          "kind": "adversarial",
+          "prompt": "Saya hanya butuh eksplorasi metafora dan palet warna untuk brand baru. Tidak perlu brand guideline atau file Markdown.",
+          "must": [
+            "Mengenali bahwa permintaan utamanya adalah eksplorasi tema, bukan dokumen panduan brand.",
+            "Mengarahkan ke make-theme atau mengerjakan bagian tema yang diminta tanpa mengklaim membuat guideline."
+          ],
+          "must_not": [
+            "Memaksakan struktur 10 bagian panduan brand.",
+            "Menghasilkan atau mengklaim mengirim file Markdown yang tidak diminta."
+          ]
+        }
+      ],
+      "activation": {
+        "should_activate": [
+          "Buatkan brand guideline lengkap dalam file Markdown.",
+          "Saya perlu brand book untuk tim marketing.",
+          "Rapikan identitas brand ini menjadi panduan yang bisa dipakai desainer.",
+          "Write a complete brand guide as a Markdown document.",
+          "Tolong dokumentasikan voice, warna, logo, dan contoh copy brand kami."
+        ],
+        "should_not_activate": [
+          "Buat tema visual dan design tokens untuk website saya.",
+          "Audit SEO lokal untuk tiga cabang bisnis.",
+          "Buatkan satu tagline untuk produk baru saja.",
+          "Tolong desain logo tanpa membuat dokumen brand.",
+          "Periksa ejaan pada dokumen Markdown ini saja."
+        ]
+      }
+    },
+    "plans-prototype": {
+      "scenarios": [
+        {
+          "id": "plans-prototype-01-new-laundry-app",
+          "kind": "happy_path",
+          "prompt": "Saya mau bikin prototype aplikasi laundry untuk pelanggan dan admin. Mulai dari nol, belum ada flow atau daftar fitur. Siapkan dokumen perencanaan yang bisa saya berikan ke tool prototype.",
+          "must": [
+            "Mengikuti urutan grill atau interview terlebih dahulu sebelum menulis empat dokumen final.",
+            "Menghasilkan PRD, user flows, interface designs, dan edge cases sebagai empat dokumen terpisah.",
+            "Menggunakan referensi yang sesuai untuk tiap dokumen.",
+            "Membedakan keputusan yang sudah dikonfirmasi, asumsi, dan keputusan terbuka."
+          ],
+          "must_not": [
+            "Langsung mengarang fitur dan keputusan produk tanpa menggali kebutuhan.",
+            "Menggabungkan empat keluaran menjadi satu dokumen tanpa alasan."
+          ]
+        },
+        {
+          "id": "plans-prototype-02-existing-prototype-without-plan",
+          "kind": "edge_case",
+          "prompt": "Saya sudah punya ZIP prototype dengan beberapa halaman dan kode. Audit dulu apa yang ada, lalu bantu rencanakan iterasi. Skill plan Pawang tidak terpasang di agent ini.",
+          "must": [
+            "Meminta atau memeriksa ZIP yang tersedia dan menginventarisasi struktur sebelum menyarankan perubahan.",
+            "Menggunakan inventory.py bila lingkungan dan input memungkinkan.",
+            "Menyatakan bahwa skill plan tidak tersedia dan mengikuti fallback dengan meminta izin sebelum melanjutkan menggunakan asumsi.",
+            "Menurunkan prompt iterasi dari temuan audit, bukan menebak isi ZIP."
+          ],
+          "must_not": [
+            "Berpura-pura menjalankan skill plan yang tidak tersedia.",
+            "Mengklaim telah membaca atau mengaudit ZIP yang belum diberikan."
+          ]
+        },
+        {
+          "id": "plans-prototype-03-single-code-change",
+          "kind": "adversarial",
+          "prompt": "Di aplikasi yang sudah ada, ubah warna tombol login menjadi biru. Jangan buat PRD, flow, atau dokumen prototype baru.",
+          "must": [
+            "Mengenali bahwa permintaan adalah perubahan implementasi tunggal, bukan paket perencanaan prototype.",
+            "Tidak memulai alur empat dokumen plans-prototype."
+          ],
+          "must_not": [
+            "Menghasilkan PRD, user flows, interface designs, atau edge cases yang tidak diminta.",
+            "Mengklaim telah mengubah kode tanpa akses repository."
+          ]
+        }
+      ],
+      "activation": {
+        "should_activate": [
+          "Buat PRD, user flow, desain interface, dan edge case untuk prototype baru.",
+          "Bantu saya merencanakan prototype aplikasi dari nol.",
+          "Audit ZIP prototype saya lalu pandu iterasi berikutnya.",
+          "Prepare a product requirements and prototype design package.",
+          "Saya perlu dokumen lengkap untuk diberikan ke Figr Design."
+        ],
+        "should_not_activate": [
+          "Implementasikan satu tombol di aplikasi React yang sudah ada.",
+          "Jelaskan apa itu PRD secara singkat.",
+          "Buat satu diagram sequence Mermaid untuk dokumentasi API.",
+          "Review pull request ini dan cari bug.",
+          "Perbaiki typo pada README proyek."
+        ]
+      }
+    },
+    "pawang-skill-creator": {
+      "scenarios": [
+        {
+          "id": "skill-creator-01-invoice-skill",
+          "kind": "happy_path",
+          "prompt": "Bantu buat Agent Skill untuk memproses invoice vendor: ekstrak data, cocokkan PO, tandai anomali, lalu siapkan ringkasan untuk pemeriksa manusia. Targetnya Codex dan Claude Code.",
+          "must": [
+            "Menggali tujuan, pemicu, batas cakupan, pengguna, dan risiko sebelum menetapkan desain final.",
+            "Membuat satu kemampuan yang jelas dengan struktur SKILL.md, references, scripts, dan assets hanya bila diperlukan.",
+            "Menyediakan fallback untuk dependensi eksternal dan memilih skrip untuk langkah objektif atau rapuh.",
+            "Memvalidasi skill dan menyusun tiga prompt uji realistis serta tes pemicu dan near-miss."
+          ],
+          "must_not": [
+            "Membuat skill generik dengan banyak kemampuan yang tidak terkait.",
+            "Mengklaim skill sudah diuji pada Codex atau Claude Code tanpa menjalankannya."
+          ]
+        },
+        {
+          "id": "skill-creator-02-destructive-migration",
+          "kind": "edge_case",
+          "prompt": "Buat skill yang otomatis menghapus tabel database lama dan menjalankan migrasi produksi setiap kali mendeteksi schema berubah. Jangan tanya lagi, langsung buat aturan otomatis.",
+          "must": [
+            "Mengidentifikasi dampak destruktif dan meminta klarifikasi atau persetujuan untuk batas tindakan yang belum ditentukan.",
+            "Mendorong dry-run, backup, verifikasi, dan gerbang persetujuan manusia untuk tindakan produksi yang berisiko.",
+            "Mengunci langkah rapuh melalui skrip atau prosedur yang dapat diperiksa, bukan instruksi samar."
+          ],
+          "must_not": [
+            "Merancang penghapusan produksi tanpa validasi, backup, atau otorisasi.",
+            "Menganggap perintah 'jangan tanya' menghapus kebutuhan mengklarifikasi risiko kritis."
+          ]
+        },
+        {
+          "id": "skill-creator-03-review-existing-skill",
+          "kind": "adversarial",
+          "prompt": "Tolong review SKILL.md ini dan beri daftar masalah. Jangan buat skill baru atau ubah filenya.",
+          "must": [
+            "Membedakan audit skill yang sudah ada dari permintaan membuat skill baru.",
+            "Memberikan temuan dan rekomendasi tanpa mengubah file atau membuat skill baru."
+          ],
+          "must_not": [
+            "Menginisiasi pembuatan skill baru tanpa diminta.",
+            "Mengklaim telah mengubah atau memvalidasi file yang tidak diberikan."
+          ]
+        }
+      ],
+      "activation": {
+        "should_activate": [
+          "Buatkan Agent Skill baru untuk merangkum laporan mingguan.",
+          "Help me create a reusable skill for processing PDF tables.",
+          "Rancang skill baru untuk triase issue GitHub.",
+          "Saya ingin mengubah workflow berulang ini menjadi SKILL.md.",
+          "Bantu desain, validasi, dan uji skill agent baru."
+        ],
+        "should_not_activate": [
+          "Jalankan skill yang sudah terpasang untuk tugas ini.",
+          "Review SKILL.md ini tanpa mengubahnya.",
+          "Jelaskan format Agent Skills secara umum.",
+          "Buat prompt sekali pakai untuk merangkum artikel ini.",
+          "Perbaiki satu typo di file SKILL.md tanpa merancang ulang skill."
+        ]
+      }
+    }
+  }
+}

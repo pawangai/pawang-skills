@@ -93,12 +93,20 @@ Catatan: `plans-prototype` dan `make-theme` berisi skrip Python, dan sebagian ap
 ## Pengembangan
 
 ```bash
-scripts/validate-all.sh         # validasi skill, manifest, dan sintaks skrip
+scripts/validate-all.sh         # validasi skill, manifest, eval, dan unit tests
+python3 scripts/validate_evals.py # validasi definisi behavioral eval saja
+python3 -m unittest discover -s tests -p 'test_*.py' -v
 scripts/package.sh              # semua skill -> dist/<nama>.zip dan dist/<nama>.skill
 scripts/package.sh interview    # satu skill
 ```
 
-`validate-all.sh` memeriksa: `name` sama dengan folder, `license`, `compatibility`, dan `metadata.author` di frontmatter; hasil `validate_skill.py`; JSON manifest, nama, dan sinkronisasi versi; serta sintaks skrip Python. Aturan perubahan ada di `AGENTS.md`.
+`validate-all.sh` memeriksa: `name` sama dengan folder, `license`, `compatibility`, dan `metadata.author` di frontmatter; hasil `validate_skill.py`; JSON manifest, nama, dan sinkronisasi versi; sintaks skrip Python; definisi behavioral eval; serta unit tests. Aturan perubahan ada di `AGENTS.md`.
+
+### Behavioral evaluation
+
+`tests/evals/cases.json` berisi tiga skenario perilaku per skill (happy path, edge case, dan adversarial), ditambah lima prompt yang seharusnya mengaktifkan dan lima prompt near-miss yang tidak seharusnya mengaktifkan setiap skill. `scripts/validate_evals.py` memeriksa kelengkapan dan konsistensi definisi tersebut; unit tests menguji validatornya.
+
+Validasi ini **tidak menjalankan model AI** dan tidak membuktikan perilaku runtime. Untuk evaluasi perilaku, jalankan setiap prompt pada agent/model target, simpan responsnya, lalu nilai dengan kriteria `must` dan `must_not` pada kasus terkait. Gunakan `tests/evals/RESULTS_TEMPLATE.md` untuk mencatat model, harness, tanggal, baseline tanpa skill, dan hasil sebelum menyatakan skill teruji.
 
 ## Struktur
 
