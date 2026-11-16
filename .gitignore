@@ -10,3 +10,24 @@ fix-log.md
 .agents/skills/
 .claude/
 skills-lock.json
+
+# lingkungan dan rahasia
+.env
+.env.*
+!.env.example
+
+# dependensi dan virtualenv
+node_modules/
+.venv/
+venv/
+
+# IDE dan OS
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+
+# log dan cache
+*.log
+.pytest_cache/
+.coverage
