@@ -15,7 +15,7 @@
 ![Claude Code](https://img.shields.io/badge/Claude_Code-marketplace-FF8A3D?style=flat-square&labelColor=14213D)
 ![Codex](https://img.shields.io/badge/Codex-marketplace-F2C14E?style=flat-square&labelColor=14213D)
 
-[Skill](#daftar-skill) · [Memasang](#memasang) · [Dependensi](#dependensi) · [Pengembangan](#pengembangan) · [Struktur](#struktur)
+[Skill](#daftar-skill) · [Memasang](#memasang) · [Dependensi](#dependensi) · [Pengembangan](#pengembangan) · [Kontribusi](#kontribusi) · [Struktur](#struktur)
 
 </div>
 
@@ -108,14 +108,29 @@ scripts/package.sh interview    # satu skill
 
 Validasi ini **tidak menjalankan model AI** dan tidak membuktikan perilaku runtime. Untuk evaluasi perilaku, jalankan setiap prompt pada agent/model target, simpan responsnya, lalu nilai dengan kriteria `must` dan `must_not` pada kasus terkait. Gunakan `tests/evals/RESULTS_TEMPLATE.md` untuk mencatat model, harness, tanggal, baseline tanpa skill, dan hasil sebelum menyatakan skill teruji.
 
+## Kontribusi
+
+Panduan lengkap di [CONTRIBUTING.md](CONTRIBUTING.md); celah keamanan di [SECURITY.md](SECURITY.md).
+
+Kebijakan branch:
+
+- `main` selalu siap dirilis dan linear. Perubahan masuk lewat PR dengan **squash merge** setelah CI (`validate`) hijau. Tanpa force push ke `main`.
+- Nama branch: `feat/*`, `fix/*`, `chore/*`, `docs/*`, `refactor/*`. Branch dihapus setelah merge.
+- Commit dan judul PR memakai Conventional Commits.
+- Saat ini tidak ada branch non-kode. Bila kelak dibuat (mis. `assets`), harus branch orphan, tidak pernah di-merge ke `main`, dan dilindungi branch protection.
+
 ## Struktur
 
 ```
 skills/<nama>/SKILL.md          # sumber tunggal semua skill
+tests/                          # definisi behavioral eval dan unit tests
 assets/                         # gambar animasi SVG untuk README
 .claude-plugin/                 # plugin dan marketplace Claude Code
 .codex-plugin/                  # plugin Codex
 .agents/plugins/marketplace.json  # marketplace Codex
 scripts/                        # validasi dan pengemasan
-.github/workflows/              # CI dan rilis
+.github/                        # CI, rilis, CODEOWNERS, template PR, Dependabot
+.githooks/                      # hook lokal opsional (core.hooksPath)
+AGENTS.md                       # aturan mengubah repo dan langkah rilis
+CONTRIBUTING.md                 # alur kontribusi
 ```
