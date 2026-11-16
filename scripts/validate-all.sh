@@ -100,5 +100,11 @@ print("\n".join("FAIL " + b for b in bad) if bad else "manifest OK")
 sys.exit(1 if bad else 0)
 PY
 
+echo "== definisi behavioral eval"
+python3 "$ROOT/scripts/validate_evals.py" || fail=1
+
+echo "== unit tests"
+python3 -m unittest discover -s "$ROOT/tests" -p 'test_*.py' -v || fail=1
+
 if [ "$fail" -ne 0 ]; then echo "GAGAL"; exit 1; fi
 echo "SEMUA LOLOS"
