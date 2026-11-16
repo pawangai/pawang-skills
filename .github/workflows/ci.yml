@@ -4,14 +4,31 @@ on:
   push:
     branches: [main]
   pull_request:
+    branches: [main]
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4.2.2
-      - name: Validasi skill dan manifest
+      - name: Judul PR (Conventional Commits, dipakai sebagai pesan squash)
+        if: github.event_name == 'pull_request'
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          printf '%s\n' "$PR_TITLE" > "$RUNNER_TEMP/title"
+          bash scripts/check-commit-msg.sh "$RUNNER_TEMP/title"
+      - name: Size guard (maks 1 MB per berkas)
+        run: bash scripts/check-size.sh
+      - name: Lint dan test (skill, manifest, eval, unit tests)
         run: bash scripts/validate-all.sh
+      - name: Build (kemas semua skill)
+        run: bash scripts/package.sh
