@@ -23,6 +23,8 @@ Larangan: Hijau Rimba dan Terakota hanya 1,75:1, jadi jangan dipasangkan sebagai
 
 Pilar contoh: Jinakkan (perbaikan), Rawat (maintenance), Bangun Kandang (arsitektur baru).
 
+Props contoh (hanya bila dekorasi diminta): server awan untuk infrastruktur yang aman, cangkir kopi beruap untuk suasana tenang, tongkat untuk peran pawang. Ketiganya ikon garis dengan tebal sama, warna dari palet.
+
 ## Contoh 2: Navigator (perencana keuangan)
 Menunjukkan metafora non-tradisional dari dunia pelayaran modern.
 - Metafora: perencana sebagai navigator yang membaca peta dan cuaca, sementara klien tetap memegang kemudi.
@@ -36,4 +38,6 @@ Menunjukkan metafora non-tradisional dari dunia pelayaran modern.
 | Kabut | #F4F8FB | Background | - |
 | Tinta Laut | #1C2B36 | Text | 13.58:1 di atas Kabut |
 
-Pilar contoh: Peta (perencanaan), Kompas (investasi), Jangkar (dana darurat). Harga dan kredensial ditulis `[ISI: ...]` sampai user memberi data.
+Pilar contoh: Peta (perencanaan), Kompas (investasi), Jangkar (dana darurat).
+
+Props contoh (hanya bila dekorasi diminta): kompas untuk arah, mercusuar untuk kejelasan tujuan, garis ombak halus sebagai pola latar. Harga dan kredensial ditulis `[ISI: ...]` sampai user memberi data.
