@@ -1,6 +1,6 @@
 ---
 name: make-theme
-description: Merancang tema brand end-to-end, yaitu metafora inti, tone of voice, aturan diksi, palet warna HEX dengan cek kontras, tipografi, maskot, tagline, pilar layanan, dan tier paket. Opsional menambah blueprint SEO/AEO/GEO dan kode tema (CSS variables, Tailwind, CLAUDE.md). Gunakan saat user minta membuat tema, rebranding, identitas visual, palet warna, tagline, atau sistem desain untuk website, bisnis, atau personal branding, walau tidak menyebut kata tema. Padanan Inggris, brand theme, design tokens, visual identity. Jangan gunakan untuk dokumen panduan brand berformat Markdown (pakai panduan-brand) atau audit SEO murni.
+description: Merancang tema brand end-to-end, yaitu metafora inti, tone of voice, aturan diksi, palet warna HEX dengan cek kontras, tipografi, maskot, tagline, pilar layanan, dan tier paket. Opsional menambah elemen dekoratif (props dan ilustrasi pendukung), blueprint SEO/AEO/GEO dan kode tema (CSS variables, Tailwind, CLAUDE.md). Gunakan saat user minta membuat tema, rebranding, identitas visual, palet warna, tagline, atau sistem desain untuk website, bisnis, atau personal branding, walau tidak menyebut kata tema. Padanan Inggris, brand theme, design tokens, visual identity. Jangan gunakan untuk dokumen panduan brand berformat Markdown (pakai panduan-brand) atau audit SEO murni.
 license: MIT
 compatibility: "Python 3 tanpa paket tambahan untuk scripts/check_theme.py. Memanggil skill interview untuk discovery; bila tidak ada, tanya langsung. Belum diuji lintas model."
 metadata:
@@ -23,6 +23,7 @@ Batas dengan `panduan-brand`: skill ini merancang tema dan token yang bisa langs
 - **Default (ringkas):** komponen 1-3.
 - **Lengkap:** tambah komponen 4 (SEO/AEO/GEO) dan 5 (kode) bila user memintanya; tawarkan di akhir sesi.
 - Bila user hanya minta satu bagian (misalnya palet saja), kerjakan bagian itu saja.
+- Elemen dekoratif (props, ilustrasi pendukung, pola latar) dikerjakan hanya bila user meminta maskot, ikonografi, atau tema lengkap. Jangan dibuat pada permintaan palet saja.
 
 ## Alur
 
@@ -42,6 +43,8 @@ Pilih warna dan font setelah metafora jelas. Hitung kontras dengan skrip, jangan
 python3 scripts/check_theme.py contrast "Nama=#HEX" "Nama=#HEX" ...
 ```
 Teks minimal 4,5:1 (WCAG AA). Pasangan yang gagal ditulis sebagai larangan eksplisit di tema.
+
+Bila maskot, ikonografi, atau tema lengkap diminta, baca `references/elemen-dekoratif.md` dan turunkan props dari metafora, bukan memilihnya acak.
 
 ### 4. Layanan dan copywriting
 Pecah tema menjadi pilar layanan dan tier paket yang namanya mengikuti metafora. Tulis tagline utama beserta alternatif per konteks, dan draf siap pakai.
@@ -64,6 +67,7 @@ Baca `references/seo-aeo-geo.md` bila komponen 4 diminta, dan `references/implem
 Peran minimal: Primary, Accent/CTA, Background, Support, Text. Kolom kontras berisi hasil skrip untuk pasangan yang dipakai bersama.
 - Tipografi: Heading dan Body dari Google Fonts dengan fallback stack. Pastikan mendukung karakter Latin lengkap. Monospace hanya bila relevan.
 - Aset visual: konsep logo, maskot atau ikonografi, dan satu kalimat larangan visual.
+- Elemen dekoratif (bila diminta): tabel 3-5 props beserta makna, lapisan, dan penempatan, serta token gaya, sesuai `references/elemen-dekoratif.md`. Berupa spesifikasi, bukan gambar jadi.
 
 ### 3. Layanan dan penawaran
 - Pilar layanan: nama sesuai metafora, satu kalimat solusi.
@@ -90,3 +94,4 @@ Ikuti `references/implementasi.md`.
 - Angka, kredensial, atau testimoni yang dikarang.
 - Lima komponen ditulis padahal user hanya butuh palet.
 - Meta title atau description melebihi batas karakter karena tidak dihitung.
+- Dekorasi ditambahkan tanpa makna atau melebihi batas, sehingga tampil ramai dan generik.

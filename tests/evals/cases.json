@@ -92,7 +92,8 @@
           ],
           "must_not": [
             "Memaksakan seluruh paket tema, tagline, maskot, layanan, atau kode.",
-            "Menyatakan pasangan warna lolos tanpa perhitungan."
+            "Menyatakan pasangan warna lolos tanpa perhitungan.",
+            "Menambahkan elemen dekoratif, props, atau ilustrasi pendukung yang tidak diminta."
           ]
         },
         {
